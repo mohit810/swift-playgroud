@@ -29,28 +29,6 @@ var empOne: [Double] = [22.3,22.34,44.32]
 
 var empThree = [String]() //initializing an empty array list
 var empFour: [String] //declaring an array list but not initializing it
-/*
- *loops
- */
-
-var index = 0
-repeat{
-    index += 1
-    print(index) // prints from 1 till 5 (including 5)
-}
-while (index < 5)
-
-while index < 10 { // prints from 5 till 10 (including 10) and works similar to the above loop
-    index += 1
-    print(index)
-}
-index = 5
-for i in 0..<index {
-    print(i) // prints from 1 till 4
-}
-for sal in emp {
-    print(sal)
-}
 
 //Dictionary (key, value)
 
@@ -134,3 +112,123 @@ class Pear{
 var pearOne = Pear(firstName: "first", middleName: "middle", lastName: "last", spouse: nil)
 
 print(pearOne.spouse?.getFullName() ?? "no spouse name found") //optional chaining
+
+/*
+ loops
+ */
+
+//repeat-while
+var index = 0
+repeat{
+    index += 1
+    print(index) // prints from 1 till 5 (including 5)
+}
+while (index < 5)
+
+//while
+while index < 10 { // prints from 5 till 10 (including 10) and works similar to the above loop
+    index += 1
+    print(index)
+}
+
+index = 5
+
+//for
+for i in 0..<index {
+    print(i) // prints from 1 till 4
+}
+for sal in emp {
+    print(sal)
+}
+
+
+/*
+ object oriented Programming
+*/
+
+class Vehicle {
+    var tires = 4
+    var headlights = 2
+    var horsepower = 468
+    var model = ""
+    
+    func brake(){}
+}
+
+let bmw = Vehicle()
+bmw.model = "328i"
+
+let ford = Vehicle()
+ford.model = "F150"
+ford.brake()
+
+func passByReference(vehicle: Vehicle){
+    vehicle.model = "cheese"
+}
+
+print(ford.model)
+
+passByReference(vehicle: ford) //Pass by reference
+
+print(ford.model)
+
+//inheretence
+
+class VehicleOne {
+    var tires = 4
+    var make: String?
+    var model: String?
+    var currentSpeed: Double = 2
+    
+    init() {
+        print("I am the Parent")
+    }
+    
+    func drive(speedIncrease: Double){
+        currentSpeed += speedIncrease * 2
+        print(carTemp.currentSpeed)
+    }
+    func brake(){}
+}
+
+class SportsCar: VehicleOne {
+    
+    override init() {
+        super.init()
+        print("I am the Child!")
+        make = "BMW"
+        model = "3 series"
+    }
+    
+    override func drive(speedIncrease: Double) {
+        currentSpeed += speedIncrease * 3
+        print(carTemp.currentSpeed)
+    }
+}
+
+let carTemp = SportsCar()
+
+carTemp.drive(speedIncrease: 10)
+print(carTemp.currentSpeed)
+
+//polymorphism
+
+class Shape {
+    var area: Double?
+    
+    func calculateArea(valA: Double, valB: Double){}
+}
+
+class Triangle: Shape {
+    
+    override func calculateArea(valA: Double, valB: Double) {
+        area = (valA * valB) / 2
+    }
+}
+
+class Rectangle: Shape {
+    override func calculateArea(valA: Double, valB: Double) {
+        area = valB * valA
+    }
+}
+
