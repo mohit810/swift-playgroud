@@ -232,3 +232,43 @@ class Rectangle: Shape {
     }
 }
 
+/* protocol */
+
+protocol CanFly {
+    func fly()
+}
+
+class Bird{
+    let isFemale = true
+    
+    func canLayEggs(){
+        if isFemale {
+            print("Can Lay eggs")
+        }
+    }
+}
+
+class Eagle: Bird, CanFly {
+    func fly()  {
+        print("Can Fly")
+    }
+}
+
+struct Airplane: CanFly { //protocol can be used with struct while inheritance of class is limited to class
+    func fly() {
+        print("can fly!!")
+    }
+}
+
+struct FlyMuseum{
+    func flyingDemo(flyingObj: CanFly) {
+        flyingObj.fly()
+    }
+}
+
+let EagleOne = Eagle()
+let AirplaneOne = Airplane()
+let MuseumOne = FlyMuseum()
+
+MuseumOne.flyingDemo(flyingObj: EagleOne)
+MuseumOne.flyingDemo(flyingObj: AirplaneOne)
