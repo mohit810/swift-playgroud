@@ -272,3 +272,24 @@ let MuseumOne = FlyMuseum()
 
 MuseumOne.flyingDemo(flyingObj: EagleOne)
 MuseumOne.flyingDemo(flyingObj: AirplaneOne)
+
+/* Closure */
+
+func calculator(n1: Int, n2: Int, operation: (Int, Int) -> Int) -> Int{
+    return operation(n1, n2)
+}
+
+func multiply(n1: Int, n2: Int) -> Int {
+    return n1 * n2
+}
+
+calculator(n1: 2, n2: 3, operation: multiply(n1:n2:)) //normal way to pass funtions
+
+let res = calculator(n1: 2, n2: 3, operation: {(n1: Int, n2: Int) -> Int in return n1 * n2}) //more adanced way
+print(res)
+
+let resOne = calculator(n1: 2, n2: 3, operation: {$0 * $1}) //most advanced way to pass function (swift interprets $0 as 1st parameter and so on...)
+print(resOne)
+
+let dummyArr = [2,3,4,5,6,7,8,9]
+print(dummyArr.map({$0 + 1}))
